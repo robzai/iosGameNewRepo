@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 // special view to draw the circles
 class DrawingView: UIView {
     
@@ -21,11 +23,7 @@ class DrawingView: UIView {
     
     var drawDebug = false // set to true show additional information about the fit
     
-    func updateFit(fit: CircleResult?, madeCircle: Bool) {
-        fitResult = fit
-        isCircle = madeCircle
-        setNeedsDisplay()
-    }
+    
     
     func updatePath(p: CGPath?) {
         //print("update Path")
@@ -35,7 +33,7 @@ class DrawingView: UIView {
     
     func clear() {
         //print("clear drawing")
-        updateFit(fit: nil, madeCircle: false)
+        //updateFit(fit: nil, madeCircle: false)
         updatePath(p: nil)
     }
     

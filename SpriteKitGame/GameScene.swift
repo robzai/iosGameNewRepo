@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import UIKit
 
 
 
@@ -62,7 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // 1
     var monstersDestroyed = 0
-    var fallFrequency = 1.5
+    var fallFrequency = 1.0
     let player = SKSpriteNode(imageNamed: "player")
 
     
@@ -95,9 +96,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
          */
         
         // 2
-        backgroundColor = SKColor.blue
-        //let color = SKColor(red: 100, green: 146, blue: 181, alpha: 0)
-        //backgroundColor = color
+        backgroundColor = UIColor(
+            red: 100/255,
+            green: 146/255,
+            blue: 181/255,
+            alpha: 1.0)
         
         //create a UIImageView
         imageView = UIImageView(frame:CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth))
@@ -160,8 +163,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Create sprite
         let monster = SKSpriteNode(imageNamed: "monster")
         let monster2 = SKSpriteNode(imageNamed: "monster2")
+        let monster3 = SKSpriteNode(imageNamed: "playButton")
         
-        let monster_array = [monster,monster2]
+        let monster_array = [monster,monster2,monster3]
         var monsterKey : String!
         
         // Determine where to spawn the monster along the X axis
@@ -174,8 +178,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if index == 0 {
             monsterKey = "vline"
-        } else {
+        } else if index == 1 {
             monsterKey = "hline"
+        } else{
+            monsterKey = "circle"
         }
         
         let actual_monster = monster_array[Int(index)]
@@ -348,4 +354,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        }
 //        
 //    }
+    
+    
+    
 }

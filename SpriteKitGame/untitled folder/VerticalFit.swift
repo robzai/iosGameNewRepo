@@ -13,14 +13,14 @@ struct VerticalResult {
     var begin: CGPoint
     var end: CGPoint
     var error: Double
-    var numOfIteration: Int
+    //var numOfIteration: Int
     var isLine = false
     
     init() {
         begin = CGPoint(x: 0,y :0)
         end = CGPoint(x: 0,y :0)
         error = 0
-        numOfIteration = 0
+        //numOfIteration = 0
     }
 }
 
@@ -56,11 +56,12 @@ func fitVertical(points: [CGPoint]) -> VerticalResult {
         let angle = Double(acos(cosValue) * 180) / M_PI;
         //print("angle: \(angle)")
         
-        
+        /*
         vertical.begin.x = beginPoint.x
         vertical.begin.y = beginPoint.y
         vertical.end.x = endPoint.x
         vertical.end.y = endPoint.y
+         */
         if((180 - angle) < 5){ vertical.isLine = true }
         vertical.error = abs(Double(beginPoint.x) - Double(endPoint.x))
         return vertical
