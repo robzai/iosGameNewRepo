@@ -14,6 +14,7 @@
 		1389266D1E49550700ACE1AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1389266B1E49550700ACE1AA /* Main.storyboard */; };
 		1389266F1E49550700ACE1AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1389266E1E49550700ACE1AA /* Assets.xcassets */; };
 		138926721E49550700ACE1AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 138926701E49550700ACE1AA /* LaunchScreen.storyboard */; };
+		20552EE21E6FAEB9006D0F40 /* CircleFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20552EE11E6FAEB9006D0F40 /* CircleFit.swift */; };
 		2071B0DD1E6E9977003CFD75 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2071B0D81E6E9976003CFD75 /* background.png */; };
 		2071B0DE1E6E9977003CFD75 /* background2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2071B0D91E6E9976003CFD75 /* background2.png */; };
 		2071B0E31E6E9B09003CFD75 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2071B0E21E6E9B09003CFD75 /* MenuScene.sks */; };
@@ -25,7 +26,6 @@
 		20CD68251E6943E900BA305F /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20CD68241E6943E900BA305F /* Explosion.sks */; };
 		B3ED1C111E6A021200DE5879 /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED1C101E6A021200DE5879 /* GestureRecognizer.swift */; };
 		B3ED1C141E6A039D00DE5879 /* VerticalFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED1C131E6A039D00DE5879 /* VerticalFit.swift */; };
-		B3ED1C161E6A03E600DE5879 /* CircleFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED1C151E6A03E600DE5879 /* CircleFit.swift */; };
 		B3FE87A91E6BA338004CD75E /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FE87A81E6BA338004CD75E /* DrawingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +39,7 @@
 		1389266E1E49550700ACE1AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		138926711E49550700ACE1AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		138926731E49550700ACE1AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20552EE11E6FAEB9006D0F40 /* CircleFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleFit.swift; sourceTree = "<group>"; };
 		2071B0D81E6E9976003CFD75 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		2071B0D91E6E9976003CFD75 /* background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background2.png; sourceTree = "<group>"; };
 		2071B0E21E6E9B09003CFD75 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
@@ -50,7 +51,6 @@
 		20CD68241E6943E900BA305F /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		B3ED1C101E6A021200DE5879 /* GestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureRecognizer.swift; sourceTree = "<group>"; };
 		B3ED1C131E6A039D00DE5879 /* VerticalFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerticalFit.swift; path = "untitled folder/VerticalFit.swift"; sourceTree = "<group>"; };
-		B3ED1C151E6A03E600DE5879 /* CircleFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleFit.swift; sourceTree = "<group>"; };
 		B3FE87A81E6BA338004CD75E /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,7 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				B3ED1C131E6A039D00DE5879 /* VerticalFit.swift */,
-				B3ED1C151E6A03E600DE5879 /* CircleFit.swift */,
+				20552EE11E6FAEB9006D0F40 /* CircleFit.swift */,
 			);
 			name = Fit;
 			sourceTree = "<group>";
@@ -211,9 +211,9 @@
 				B3ED1C111E6A021200DE5879 /* GestureRecognizer.swift in Sources */,
 				2071B0E51E6E9B81003CFD75 /* MenuScene.swift in Sources */,
 				B3FE87A91E6BA338004CD75E /* DrawingView.swift in Sources */,
-				B3ED1C161E6A03E600DE5879 /* CircleFit.swift in Sources */,
 				1389266A1E49550700ACE1AA /* GameViewController.swift in Sources */,
 				131320FA1E4C33F80001D8E6 /* GameOverScene.swift in Sources */,
+				20552EE21E6FAEB9006D0F40 /* CircleFit.swift in Sources */,
 				138926621E49550700ACE1AA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,9 +15,10 @@ class GestureRecognizer: UIGestureRecognizer {
     
     var cFitResult = CircleResult() // information about how circle-like is the path
     var vFitResult = VerticalResult()
-    var tolerance: CGFloat = 0.5 // circle wiggle room 抖动动值
+    //var tolerance: CGFloat = 0.5 // circle wiggle room 抖动动值
     var isCircle = false
     var isVertical = false
+    var shape = ""
     
     var lastPoint = CGPoint.zero
     
@@ -32,6 +33,7 @@ class GestureRecognizer: UIGestureRecognizer {
         
         touchedPoints.removeAll(keepingCapacity: true)
         isVertical = false
+        isCircle = false
         
         let window = view?.window
         if let loc = touches.first?.location(in: window) {
@@ -54,8 +56,21 @@ class GestureRecognizer: UIGestureRecognizer {
         //isCircle = cFitResult.error <= tolerance && !hasInside //&& percentOverlap > (1-tolerance)
         
         path = CGMutablePath()
+        
         isVertical = (vFitResult.error < 10.0) && vFitResult.isLine
-        state = isVertical ? .ended : .failed
+        isCircle = (cFitResult.error < 10.0) && cFitResult.isCircle
+        
+        
+        if isVertical {
+            shape = "vertical"
+            state = .ended
+        } else if isCircle {
+            shape = "circle"
+            state = .ended
+        }else{
+            state = .failed
+        }
+
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {

@@ -54,6 +54,9 @@ class GameViewController: UIViewController {
     }
     
     func circled(c: GestureRecognizer){
+        
+        drawer.clear()
+        
         if c.state == .began {
             //print("began")            
         }
@@ -64,9 +67,16 @@ class GameViewController: UIViewController {
             print("failed")
         }
         if c.state == .ended {
-            drawer.clear()
-            print("vertical line")            
-            scene.projectileDidCollideWithMonster(name: "vline")
+            //drawer.clear()
+            if c.shape == "vertical"{
+                print("vertical line")
+                scene.projectileDidCollideWithMonster(name: "vline")
+            }else if c.shape == "circle"{
+                print("circle")
+                scene.projectileDidCollideWithMonster(name: "circle")
+            }else{
+                print("can't recognize")
+            }
         }
         if c.state == .possible{
             print("possible")
