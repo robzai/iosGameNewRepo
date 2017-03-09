@@ -157,7 +157,7 @@
 				TargetAttributes = {
 					1389265D1E49550700ACE1AA = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 64XW382CCW;
+						DevelopmentTeam = 4QQT68W5D7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -337,11 +337,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 64XW382CCW;
+				DEVELOPMENT_TEAM = 4QQT68W5D7;
 				INFOPLIST_FILE = SpriteKitGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mybcit.SpriteKitGameGroup17;
+				PRODUCT_BUNDLE_IDENTIFIER = onebite.tk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -352,11 +352,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 64XW382CCW;
+				DEVELOPMENT_TEAM = 4QQT68W5D7;
 				INFOPLIST_FILE = SpriteKitGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mybcit.SpriteKitGameGroup17;
+				PRODUCT_BUNDLE_IDENTIFIER = onebite.tk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
