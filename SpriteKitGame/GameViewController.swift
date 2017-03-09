@@ -22,7 +22,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back")!)
         
-        /*
+        
         //show gamescene first
         scene = GameScene(size: view.bounds.size)
         let skView = view as! SKView
@@ -30,9 +30,9 @@ class GameViewController: UIViewController {
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         scene?.scaleMode = .fill
-        skView.presentScene(scene)*/
+        skView.presentScene(scene)
  
-        
+        /*
         //show menescene first
         let scene = MenuScene(fileNamed: "MenuScene")
         let skView = view as! SKView
@@ -40,12 +40,13 @@ class GameViewController: UIViewController {
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         scene?.scaleMode = .fill
-        skView.presentScene(scene)
+        skView.presentScene(scene)*/
         
         
         
         recognizer = GestureRecognizer(target: self, action: #selector(GameViewController.circled))
         view.addGestureRecognizer(recognizer)
+        
         
     }
     
@@ -67,14 +68,17 @@ class GameViewController: UIViewController {
             print("failed")
         }
         if c.state == .ended {
-            //drawer.clear()
+            //drawer.clear();
             if c.shape == "vertical"{
                 print("vertical line")
                 scene.projectileDidCollideWithMonster(name: "vline")
             }else if c.shape == "circle"{
                 print("circle")
                 scene.projectileDidCollideWithMonster(name: "circle")
-            }else{
+            } else if c.shape == "horizontal"{
+                print("horizontal line")
+                scene.projectileDidCollideWithMonster(name: "hline")
+            } else{
                 print("can't recognize")
             }
         }
