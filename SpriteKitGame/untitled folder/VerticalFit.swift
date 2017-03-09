@@ -10,24 +10,29 @@ import Foundation
 import UIKit
 
 struct VerticalResult {
-    var begin: CGPoint
-    var end: CGPoint
+//    var begin: CGPoint
+//    var end: CGPoint
     var error: Double
     //var numOfIteration: Int
     var isLine = false
     
     init() {
-        begin = CGPoint(x: 0,y :0)
-        end = CGPoint(x: 0,y :0)
+//        begin = CGPoint(x: 0,y :0)
+//        end = CGPoint(x: 0,y :0)
         error = 0
         //numOfIteration = 0
     }
 }
 
-func fitVertical(points: [CGPoint]) -> VerticalResult {
+func fitVertical(points: [CGPoint]) -> Bool {
+    let allowanceForAngle = 5.0
+    let allowanceForXDifference = 10.0
     let dataLength: CGFloat = CGFloat(points.count)
-    var vertical = VerticalResult()
-    if(dataLength > 0){
+    if (dataLength < 10 ){
+        return false
+    }
+//    var vertical = VerticalResult()
+//    if(dataLength > 0){
         var mean: CGPoint = CGPoint(x: 0,y :0)
         
         let beginPoint: CGPoint = points[0]
@@ -62,10 +67,16 @@ func fitVertical(points: [CGPoint]) -> VerticalResult {
         vertical.end.x = endPoint.x
         vertical.end.y = endPoint.y
          */
-        if((180 - angle) < 5){ vertical.isLine = true }
-        vertical.error = abs(Double(beginPoint.x) - Double(endPoint.x))
-        return vertical
+        if((180 - angle) > allowanceForAngle){
+//            vertical.isLine = true
+            return false
+        }
+    if(abs(Double(beginPoint.x) - Double(endPoint.x)) > allowanceForXDifference){
+        return false
     }
-    return vertical
+//        vertical.error = abs(Double(beginPoint.x) - Double(endPoint.x))
+//        return vertical
+//    }
+    return true
 }
 

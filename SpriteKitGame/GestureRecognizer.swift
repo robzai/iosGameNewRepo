@@ -13,8 +13,8 @@ class GestureRecognizer: UIGestureRecognizer {
     
     private var touchedPoints = [CGPoint]() // point history
     
-    var cFitResult = CircleResult() // information about how circle-like is the path
-    var vFitResult = VerticalResult()
+    //var cFitResult = CircleResult() // information about how circle-like is the path
+//    var vFitResult = VerticalResult()
     //var tolerance: CGFloat = 0.5 // circle wiggle room 抖动动值
     var isCircle = false
     var isVertical = false
@@ -47,8 +47,10 @@ class GestureRecognizer: UIGestureRecognizer {
         super.touchesEnded(touches, with: event)
         
         // now that the user has stopped touching, figure out if the path was a circle
-        cFitResult = fitCircle(points: touchedPoints)
-        vFitResult = fitVertical(points: touchedPoints)
+//        cFitResult = fitCircle(points: touchedPoints)
+        isCircle = fitCircle(points: touchedPoints)
+        isVertical = fitVertical(points: touchedPoints)
+//        vFitResult = fitVertical(points: touchedPoints)
         
         // make sure there are no points in the middle of the circle
         //let hasInside = anyPointsInTheMiddle()        
@@ -57,8 +59,8 @@ class GestureRecognizer: UIGestureRecognizer {
         
         path = CGMutablePath()
         
-        isVertical = (vFitResult.error < 10.0) && vFitResult.isLine
-        isCircle = (cFitResult.error < 10.0) && cFitResult.isCircle
+//        isVertical = (vFitResult.error < 10.0) && vFitResult.isLine
+//        isCircle = (cFitResult.error < 10.0) && cFitResult.isCircle
         
         
         if isVertical {

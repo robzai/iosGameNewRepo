@@ -22,7 +22,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back")!)
         
-        
+        /*
         //show gamescene first
         scene = GameScene(size: view.bounds.size)
         let skView = view as! SKView
@@ -30,9 +30,9 @@ class GameViewController: UIViewController {
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         scene?.scaleMode = .fill
-        skView.presentScene(scene)
+        skView.presentScene(scene)*/
  
-        /*
+        
         //show menescene first
         let scene = MenuScene(fileNamed: "MenuScene")
         let skView = view as! SKView
@@ -41,7 +41,7 @@ class GameViewController: UIViewController {
         skView.ignoresSiblingOrder = true
         scene?.scaleMode = .fill
         skView.presentScene(scene)
-        */
+        
         
         
         recognizer = GestureRecognizer(target: self, action: #selector(GameViewController.circled))

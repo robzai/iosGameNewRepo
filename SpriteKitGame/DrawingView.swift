@@ -18,7 +18,7 @@ class DrawingView: UIView {
     }
     
     private var path: CGPath?
-    private var fitResult: CircleResult?
+//    private var fitResult: CircleResult?
     private var isCircle = false
     
     var drawDebug = false // set to true show additional information about the fit
