@@ -9,19 +9,24 @@
 import Foundation
 import UIKit
 
-struct CircleResult {
-    var error: Double
-    var isCircle = false
-    
-    init() {
-        error = 0
-    }
-}
+//struct CircleResult {
+//    var error: Double
+//    var isCircle = false
+//    
+//    init() {
+//        error = 0
+//    }
+//}
 
-func fitCircle(points: [CGPoint]) -> CircleResult {
+func fitCircle(points: [CGPoint]) -> Bool {
+    let allowanceForBeginAndEnd = 20.0
+    let allowanceForCircleDifference = 20.0
     let dataLength: CGFloat = CGFloat(points.count)
-    var circle = CircleResult()
-    if(dataLength > 0){
+//    var circle = CircleResult()
+    if (dataLength < 20 ){
+        return false
+    }
+//    if(dataLength > 0){
         var mean: CGPoint = CGPoint(x: 0,y :0)
         
         for p in points {
@@ -41,17 +46,23 @@ func fitCircle(points: [CGPoint]) -> CircleResult {
         let radius = Double(sqrt((mean.x-points[0].x)*(mean.x-points[0].x)+(mean.y-points[0].y)*(mean.y-points[0].y)))
         for pt in arrayOfPoints {
             let distance = Double(sqrt((mean.x-pt.x)*(mean.x-pt.x)+(mean.y-pt.y)*(mean.y-pt.y)))
-            if abs(distance-radius)<6 {
-                circle.isCircle = true
-            }else{
-                circle.isCircle = false
+//            if abs(distance-radius)<6 {
+//                circle.isCircle = true
+//            }else{
+//                circle.isCircle = false
+//            }
+            if abs(distance-radius) > allowanceForBeginAndEnd {
+                return false
             }
         }
        
-        circle.error = abs(Double(points[0].x) - Double(points[ Int(dataLength - 1) ].x))
-        return circle
-    }
-    return circle
+//        circle.error = abs(Double(points[0].x) - Double(points[ Int(dataLength - 1) ].x))
+        if abs(Double(points[0].x) - Double(points[ Int(dataLength - 1) ].x)) > allowanceForCircleDifference{
+            return false
+        }
+//        return circle
+//    }
+    return true
 }
 
 

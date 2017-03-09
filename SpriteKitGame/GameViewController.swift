@@ -40,8 +40,8 @@ class GameViewController: UIViewController {
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         scene?.scaleMode = .fill
-        skView.presentScene(scene)
-        */
+        skView.presentScene(scene)*/
+        
         
         
         recognizer = GestureRecognizer(target: self, action: #selector(GameViewController.circled))
