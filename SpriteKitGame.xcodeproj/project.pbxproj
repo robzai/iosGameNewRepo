@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		131320FA1E4C33F80001D8E6 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131320F91E4C33F80001D8E6 /* GameOverScene.swift */; };
+		131EF3BD1E6FEE2C00BE7EE2 /* HorizentalFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131EF3BC1E6FEE2C00BE7EE2 /* HorizentalFit.swift */; };
 		138926621E49550700ACE1AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138926611E49550700ACE1AA /* AppDelegate.swift */; };
 		138926681E49550700ACE1AA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138926671E49550700ACE1AA /* GameScene.swift */; };
 		1389266A1E49550700ACE1AA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138926691E49550700ACE1AA /* GameViewController.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		131320F91E4C33F80001D8E6 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		131EF3BC1E6FEE2C00BE7EE2 /* HorizentalFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizentalFit.swift; sourceTree = "<group>"; };
 		1389265E1E49550700ACE1AA /* SpriteKitGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteKitGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		138926611E49550700ACE1AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		138926671E49550700ACE1AA /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				B3ED1C131E6A039D00DE5879 /* VerticalFit.swift */,
 				20552EE11E6FAEB9006D0F40 /* CircleFit.swift */,
+				131EF3BC1E6FEE2C00BE7EE2 /* HorizentalFit.swift */,
 			);
 			name = Fit;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				B3FE87A91E6BA338004CD75E /* DrawingView.swift in Sources */,
 				1389266A1E49550700ACE1AA /* GameViewController.swift in Sources */,
 				131320FA1E4C33F80001D8E6 /* GameOverScene.swift in Sources */,
+				131EF3BD1E6FEE2C00BE7EE2 /* HorizentalFit.swift in Sources */,
 				20552EE21E6FAEB9006D0F40 /* CircleFit.swift in Sources */,
 				138926621E49550700ACE1AA /* AppDelegate.swift in Sources */,
 			);
