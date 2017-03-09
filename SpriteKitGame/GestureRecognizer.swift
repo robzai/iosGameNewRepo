@@ -15,9 +15,11 @@ class GestureRecognizer: UIGestureRecognizer {
     
     var cFitResult = CircleResult() // information about how circle-like is the path
     var vFitResult = VerticalResult()
+    var hFitResult = HorizontalResult()
     //var tolerance: CGFloat = 0.5 // circle wiggle room 抖动动值
     var isCircle = false
     var isVertical = false
+    var isHorizontal = false
     var shape = ""
     
     var lastPoint = CGPoint.zero
@@ -49,6 +51,7 @@ class GestureRecognizer: UIGestureRecognizer {
         // now that the user has stopped touching, figure out if the path was a circle
         cFitResult = fitCircle(points: touchedPoints)
         vFitResult = fitVertical(points: touchedPoints)
+        hFitResult = fitHorizontal(points: touchedPoints)
         
         // make sure there are no points in the middle of the circle
         //let hasInside = anyPointsInTheMiddle()        
@@ -59,6 +62,8 @@ class GestureRecognizer: UIGestureRecognizer {
         
         isVertical = (vFitResult.error < 10.0) && vFitResult.isLine
         isCircle = (cFitResult.error < 10.0) && cFitResult.isCircle
+        isHorizontal = hFitResult.isHLine
+
         
         
         if isVertical {
@@ -67,7 +72,10 @@ class GestureRecognizer: UIGestureRecognizer {
         } else if isCircle {
             shape = "circle"
             state = .ended
-        }else{
+        } else if isHorizontal {
+            shape = "horizontal"
+            state = .ended
+        } else{
             state = .failed
         }
 

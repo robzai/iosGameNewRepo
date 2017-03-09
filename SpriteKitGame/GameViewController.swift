@@ -47,6 +47,7 @@ class GameViewController: UIViewController {
         recognizer = GestureRecognizer(target: self, action: #selector(GameViewController.circled))
         view.addGestureRecognizer(recognizer)
         
+        
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -67,14 +68,17 @@ class GameViewController: UIViewController {
             print("failed")
         }
         if c.state == .ended {
-            //drawer.clear()
+            //drawer.clear();
             if c.shape == "vertical"{
                 print("vertical line")
                 scene.projectileDidCollideWithMonster(name: "vline")
             }else if c.shape == "circle"{
                 print("circle")
                 scene.projectileDidCollideWithMonster(name: "circle")
-            }else{
+            } else if c.shape == "horizontal"{
+                print("horizontal line")
+                scene.projectileDidCollideWithMonster(name: "hline")
+            } else{
                 print("can't recognize")
             }
         }
