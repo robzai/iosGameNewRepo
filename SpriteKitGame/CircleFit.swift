@@ -60,7 +60,7 @@ func fitCircle(points: [CGPoint]) -> Bool {
         if abs(Double(points[0].x) - Double(points[ Int(dataLength - 1) ].x)) > allowanceForCircleDifference{
             return false
         }
-//        return circle
+//        return circle 
 //    }
     return true
 }
