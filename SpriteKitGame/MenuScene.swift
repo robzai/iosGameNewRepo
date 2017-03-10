@@ -7,18 +7,28 @@
 //
 
 import SpriteKit
+import UIKit
 
 class MenuScene: SKScene, SKPhysicsContactDelegate{
-    
+        
     override func didMove(to view: SKView){
         
         physicsWorld.contactDelegate = self
+        //transfer to gameScene
         
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+           
+            let reveal = SKTransition.doorsCloseVertical(withDuration: 1.5)
+            let gameScene = GameScene(size: view.bounds.size)
+            self.view?.presentScene(gameScene, transition: reveal)
+            
+        }
         
         
     }
     
-    
+    /*
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         
@@ -46,6 +56,7 @@ class MenuScene: SKScene, SKPhysicsContactDelegate{
         
         
     }
+ */
     
     
     

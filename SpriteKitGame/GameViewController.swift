@@ -32,15 +32,17 @@ class GameViewController: UIViewController {
         scene?.scaleMode = .fill
         skView.presentScene(scene)
  
+ 
         /*
-        //show menescene first
+        //show menuscene first
         let scene = MenuScene(fileNamed: "MenuScene")
         let skView = view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         scene?.scaleMode = .fill
-        skView.presentScene(scene)*/
+        skView.presentScene(scene)
+ */
         
         
         
