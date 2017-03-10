@@ -53,6 +53,11 @@ extension CGPoint {
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    //add monster array
+    var brownArray = [SKTexture]()
+    var pinkArray = [SKTexture]()
+    var greenArray = [SKTexture]()
+    
     //add score label
     var scoreLabel:SKLabelNode!
     var score:Int = 0 {
@@ -88,6 +93,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
+        brownArray.append(SKTexture(imageNamed: "alienBeige_walk1.png"))
+        brownArray.append(SKTexture(imageNamed: "alienBeige_walk2.png"))
+        
+        pinkArray.append(SKTexture(imageNamed: "alienPink_jump.png"))
+        pinkArray.append(SKTexture(imageNamed: "alienPink_stand.png"))
+        
+        greenArray.append(SKTexture(imageNamed: "alienGreen_climb1.png"))
+        greenArray.append(SKTexture(imageNamed: "alienGreen_climb2.png"))
+        
        
         /*
          background.size = self.frame.size;
@@ -97,9 +111,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // 2
         backgroundColor = UIColor(
-            red: 100/255,
-            green: 146/255,
-            blue: 181/255,
+            red: 30/255,
+            green: 167/255,
+            blue: 225/255,
             alpha: 1.0)
         
         //create a UIImageView
@@ -115,7 +129,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // 3
         player.position = CGPoint(x: size.width * 0.5, y: size.height * 0.1)
         // 4
-        addChild(player)
+        //addChild(player)
         
         
         run(SKAction.repeatForever(
@@ -161,9 +175,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addMonster() {
         
         // Create sprite
-        let monster = SKSpriteNode(imageNamed: "monster")
-        let monster2 = SKSpriteNode(imageNamed: "monster2")
-        let monster3 = SKSpriteNode(imageNamed: "playButton")
+        let monster = SKSpriteNode(imageNamed: "alienBeige_swim1.png")
+        monster.run(SKAction.repeatForever(SKAction.animate(with: brownArray, timePerFrame: 0.1)))
+        
+        let monster2 = SKSpriteNode(imageNamed: "alienPink_jump.png")
+        //monster.run(SKAction.repeatForever(SKAction.animate(with: pinkArray, timePerFrame: 0.1)))
+        
+        let monster3 = SKSpriteNode(imageNamed: "alienGreen_climb1.png")
+        //monster.run(SKAction.repeatForever(SKAction.animate(with: greenArray, timePerFrame: 0.1)))
+        
         
         let monster_array = [monster,monster2,monster3]
         var monsterKey : String!
@@ -317,7 +337,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let explosion = SKEmitterNode(fileNamed: "Explosion")!
             explosion.position = node.position
             self.addChild(explosion)
-            self.run(SKAction.playSoundFileNamed("ExplosionSound.mp3", waitForCompletion: false))
+            self.run(SKAction.playSoundFileNamed("bubbleSound.wav", waitForCompletion: false))
             self.monstersDestroyed += 1
             self.score = self.monstersDestroyed
             
