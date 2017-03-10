@@ -14,7 +14,8 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var drawer: DrawingView!
     var recognizer: GestureRecognizer!
-    var scene: GameScene!
+    var gameScene: GameScene!
+    
     // draws the user input
     //@IBOutlet weak var circlerDrawer: CircleDrawView!
     
@@ -24,23 +25,26 @@ class GameViewController: UIViewController {
         
         
         //show gamescene first
-        scene = GameScene(size: view.bounds.size)
+        gameScene = GameScene(size: view.bounds.size)
         let skView = view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
-        scene?.scaleMode = .fill
-        skView.presentScene(scene)
+        gameScene?.scaleMode = .fill
+        skView.presentScene(gameScene)
  
-        /*
-        //show menescene first
-        let scene = MenuScene(fileNamed: "MenuScene")
-        let skView = view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        skView.ignoresSiblingOrder = true
-        scene?.scaleMode = .fill
-        skView.presentScene(scene)*/
+        
+//        //show menescene first
+//        let menuScene = MenuScene(fileNamed: "MenuScene")
+//        let skView = view as! SKView
+//        skView.showsFPS = true
+//        skView.showsNodeCount = true
+//        skView.ignoresSiblingOrder = true
+//        menuScene?.scaleMode = .fill
+//        
+//        gameScene = GameScene(size: view.bounds.size)
+//        
+//        skView.presentScene(menuScene)
         
         
         
@@ -71,13 +75,13 @@ class GameViewController: UIViewController {
             //drawer.clear();
             if c.shape == "vertical"{
                 print("vertical line")
-                scene.projectileDidCollideWithMonster(name: "vline")
+                gameScene.projectileDidCollideWithMonster(name: "vline")
             }else if c.shape == "circle"{
                 print("circle")
-                scene.projectileDidCollideWithMonster(name: "circle")
+                gameScene.projectileDidCollideWithMonster(name: "circle")
             } else if c.shape == "horizontal"{
                 print("horizontal line")
-                scene.projectileDidCollideWithMonster(name: "hline")
+                gameScene.projectileDidCollideWithMonster(name: "hline")
             } else{
                 print("can't recognize")
             }
