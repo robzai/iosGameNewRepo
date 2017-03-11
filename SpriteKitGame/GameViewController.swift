@@ -15,6 +15,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var drawer: DrawingView!
     var recognizer: GestureRecognizer!
     var gameScene: GameScene!
+    var gameoverScene: GameOverScene!
+    var skView: SKView!
     
     // draws the user input
     //@IBOutlet weak var circlerDrawer: CircleDrawView!
@@ -24,9 +26,9 @@ class GameViewController: UIViewController {
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "back")!)
         
         
-        //show gamescene first
+//        //show gamescene first
         gameScene = GameScene(size: view.bounds.size)
-        let skView = view as! SKView
+        skView = view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
@@ -36,16 +38,14 @@ class GameViewController: UIViewController {
         
 //        //show menescene first
 //        let menuScene = MenuScene(fileNamed: "MenuScene")
-//        let skView = view as! SKView
+//        skView = view as! SKView
 //        skView.showsFPS = true
 //        skView.showsNodeCount = true
 //        skView.ignoresSiblingOrder = true
 //        menuScene?.scaleMode = .fill
-//        
 //        gameScene = GameScene(size: view.bounds.size)
-//        
 //        skView.presentScene(menuScene)
-        
+
         
         
         recognizer = GestureRecognizer(target: self, action: #selector(GameViewController.circled))
@@ -95,5 +95,16 @@ class GameViewController: UIViewController {
          }*/
     }
 
+    func showGameSene(){
+        let reveal = SKTransition.doorsCloseVertical(withDuration: 1.5)
+        skView.presentScene(gameScene, transition: reveal)
+    }
     
+    
+    func showGameOverSene(markYouGot: Int){
+        gameScene = GameScene(size: view.bounds.size)
+        let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+        gameoverScene = GameOverScene(size: view.bounds.size, won: false, mark: markYouGot)
+        skView.presentScene(gameoverScene, transition: reveal)
+    }
 }

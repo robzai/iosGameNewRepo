@@ -150,11 +150,12 @@ class GameOverScene: SKScene {
         run(SKAction.sequence([
             SKAction.wait(forDuration: 6.0),
             SKAction.run() {
-                let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-                let scene = GameScene(size: size)
-                self.view?.presentScene(scene, transition:reveal)
+                //let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+                let controller = self.view?.window?.rootViewController as! GameViewController
+                controller.showGameSene()
             }
             ]))
+//        self.backToGame()
     }
     
     // 6
@@ -162,6 +163,15 @@ class GameOverScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
+//    func backToGame(){
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+//            
+//            //            let reveal = SKTransition.doorsCloseVertical(withDuration: 1.5)
+//            //            gameScene = GameScene(size: view.bounds.size)
+//            //            self.view?.presentScene(gameScene, transition: reveal)
+//            let controller = self.view?.window?.rootViewController as! GameViewController
+//            controller.showGameSene()
+//        }
+//    }
+
 }
