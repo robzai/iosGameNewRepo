@@ -27,24 +27,24 @@ class GameViewController: UIViewController {
         
         
 //        //show gamescene first
-//        gameScene = GameScene(size: view.bounds.size)
-//        skView = view as! SKView
-//        skView.showsFPS = true
-//        skView.showsNodeCount = true
-//        skView.ignoresSiblingOrder = true
-//        gameScene?.scaleMode = .fill
-//        skView.presentScene(gameScene)
- 
-        
-//        //show menescene first
-        let menuScene = MenuScene(fileNamed: "MenuScene")
+        gameScene = GameScene(size: view.bounds.size)
         skView = view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
-        menuScene?.scaleMode = .fill
-        gameScene = GameScene(size: view.bounds.size)
-        skView.presentScene(menuScene)
+        gameScene?.scaleMode = .fill
+        skView.presentScene(gameScene)
+ 
+        
+        //show menescene first
+//        let menuScene = MenuScene(fileNamed: "MenuScene")
+//        skView = view as! SKView
+//        skView.showsFPS = true
+//        skView.showsNodeCount = true
+//        skView.ignoresSiblingOrder = true
+//        menuScene?.scaleMode = .fill
+//        gameScene = GameScene(size: view.bounds.size)
+//        skView.presentScene(menuScene)
 
         
         

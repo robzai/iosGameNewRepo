@@ -5,7 +5,6 @@
 //  Created by iMac03 on 2017-02-06.
 //  Copyright © 2017 iMac03. All rights reserved.
 //
-
 import SpriteKit
 import UIKit
 
@@ -15,7 +14,7 @@ struct PhysicsCategory {
     static let None      : UInt32 = 0
     static let All       : UInt32 = UInt32.max
     static let Monster   : UInt32 = 0b1       // 1
-    static let Projectile: UInt32 = 0b10      // 2   
+    static let Projectile: UInt32 = 0b10      // 2
 }
 
 
@@ -52,6 +51,8 @@ extension CGPoint {
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    var scoreForDuration = 4
+    var scoreForAddCloud = 10
     
     //add monster array
     var brownArray = [SKTexture]()
@@ -68,9 +69,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // 1
     var monstersDestroyed = 0
-    var fallFrequency = 1.0
+    var fallFrequency = 3.0
     let player = SKSpriteNode(imageNamed: "player")
-
+    
     
     var lastPoint = CGPoint.zero
     var swiped = false
@@ -89,7 +90,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
     
     var monsterArray = ["vline" : [SKSpriteNode](),"hline" : [SKSpriteNode]()]
-
+    var actionSequence: SKAction!
     
     override func didMove(to view: SKView) {
         
@@ -102,7 +103,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         greenArray.append(SKTexture(imageNamed: "alienGreen_climb1.png"))
         greenArray.append(SKTexture(imageNamed: "alienGreen_climb2.png"))
         
-       
+        
         /*
          background.size = self.frame.size;
          background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
@@ -132,13 +133,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //addChild(player)
         
         
-        run(SKAction.repeatForever(
-            SKAction.sequence([
-                SKAction.run(addMonster),
-                SKAction.run(uploadFrequency),
-                SKAction.wait(forDuration: fallFrequency)
-                ])
-        ))
+        //        run(SKAction.repeatForever(
+        //            SKAction.sequence([
+        //                SKAction.run(addMonster),
+        //                SKAction.run(uploadFrequency),
+        //                SKAction.wait(forDuration: fallFrequency)
+        //                ])
+        //        ))
+        
+        
+        createActionSequence(fallFrequency: fallFrequency)
+        let repeatAction = SKAction.repeatForever(actionSequence)
+        run(repeatAction, withKey: "repeatAction")
         
         physicsWorld.gravity = CGVector.zero
         physicsWorld.contactDelegate = self
@@ -148,7 +154,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.position = CGPoint(x: 80, y: self.frame.size.height - 40)
         scoreLabel.fontName = "AmericanTypewriter-Bold"
         scoreLabel.fontSize = 24
-        scoreLabel.fontColor = UIColor.white
+        scoreLabel.fontColor = UIColor.lightGray
+        scoreLabel.zPosition = 2
         score = 0
         
         self.addChild(scoreLabel)
@@ -156,6 +163,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func createActionSequence(fallFrequency: Double){
+        actionSequence = SKAction.sequence([
+            SKAction.run(addMonster),
+            SKAction.run(updateFrequency),
+            SKAction.run(addCloud),
+            SKAction.wait(forDuration: fallFrequency)
+            ])
+        print("fallFrequency\(fallFrequency)")
+    }
     
     func random() -> CGFloat {
         return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
@@ -165,10 +181,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return random() * (max - min) + min
     }
     
-    func uploadFrequency()  {
-        if monstersDestroyed % 5 == 0 && self.fallFrequency > 1.0 {
-            self.fallFrequency = self.fallFrequency - 1.0
-            print(String(self.fallFrequency))
+    /*
+     * change the frequency of adding monsters whenever 3 scores were earned
+     */
+    func updateFrequency()  {
+        if monstersDestroyed >= scoreForDuration && self.fallFrequency > 1.0 {
+            scoreForDuration += 3
+            self.fallFrequency = self.fallFrequency - 0.5
+            removeAction(forKey: "repeatAction")
+            createActionSequence(fallFrequency: self.fallFrequency)
+            let repeatAction = SKAction.repeatForever(actionSequence)
+            run(repeatAction, withKey: "repeatAction")
         }
     }
     
@@ -188,12 +211,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let monster_array = [monster,monster2,monster3]
         var monsterKey : String!
         
-        // Determine where to spawn the monster along the X axis
+        let actualDuration_array = [3.0, 4.5, 6.5, 12.0]
+        
+        /*
+         * Determine where to spawn the monster along the X axis
+         */
         let  actualX = random(min: monster.size.width/2, max: size.width - monster.size.width/2)
         
-        // Position the monster slightly off-screen along the right edge,
-        // and along a random position along the Y axis as calculated above
-        //let temp = monster_array.count - 1
+        /* 
+         * Position the monster slightly off-screen along the right edge,
+         * and along a random position along the Y axis as calculated above
+         */
         let index = arc4random_uniform(UInt32(monster_array.count))
         
         if index == 0 {
@@ -205,7 +233,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         let actual_monster = monster_array[Int(index)]
-        
         actual_monster.physicsBody = SKPhysicsBody(rectangleOf: monster.size) // 1
         actual_monster.physicsBody?.isDynamic = true // 2
         actual_monster.physicsBody?.categoryBitMask = PhysicsCategory.Monster // 3
@@ -221,135 +248,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //print("after \(self.children.count)")
         
-        
         // Determine speed of the monster
-        let actualDuration = CGFloat(5.0)
-        
+        let randomIndex: UInt32 = arc4random_uniform(UInt32(actualDuration_array.count))
+        let actualDurationIndex: Int = Int(randomIndex)
+        let actualDuration = actualDuration_array[actualDurationIndex]
+        //print("actualDuration:\(actualDuration)")
+
         // Create the actions
         let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -actual_monster.size.height/2), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         let loseAction = SKAction.run() {
-
-//            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-            
-            
-//            let gameOverScene = GameOverScene(size: self.size, won: false, mark: self.monstersDestroyed)
-//            self.view?.presentScene(gameOverScene, transition: reveal)
-            
-            
-            
             let controller = self.view?.window?.rootViewController as! GameViewController
             controller.showGameOverSene(markYouGot: self.monstersDestroyed)
             
-            
-            
         }
         //without lose
-//        actual_monster.run(SKAction.sequence([actionMove,actionMoveDone]))
+                actual_monster.run(SKAction.sequence([actionMove,actionMoveDone]))
         //contain lose
-        actual_monster.run(SKAction.sequence([actionMove, loseAction,actionMoveDone]))
+//        actual_monster.run(SKAction.sequence([actionMove, loseAction,actionMoveDone]))
         
     }
     
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        swiped = false
-//        
-//        if let touch = touches.first {
-//            lastPoint = touch.location(in: self.view)
-//        }
-//    }
     
-    func drawLines(fromPoint:CGPoint,toPoint:CGPoint) {
-        UIGraphicsBeginImageContext((self.view?.frame.size)!)
-        imageView.image?.draw(in: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
-        let context = UIGraphicsGetCurrentContext()
-        
-        context?.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
-        context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
-        tool.center = toPoint
-        
-        context?.setBlendMode(CGBlendMode.normal)
-        context?.setLineCap(CGLineCap.round)
-        context?.setLineWidth(5)
-        context?.setStrokeColor(UIColor(red: red, green: green, blue: blue, alpha: 1.0).cgColor)
-        
-        context?.strokePath()
-        
-        imageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //swiped = true
-        
-        if let touch = touches.first {
-            let currentPoint = touch.location(in: self.view)
-            drawLines(fromPoint: lastPoint, toPoint: currentPoint)
-            
-            lastPoint = currentPoint
-        }
-    }
-    
-    
-    // shoot monsters
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        
-//        if !swiped {
-//            drawLines(fromPoint: lastPoint, toPoint: lastPoint)
-//        }
-//        self.imageView.image = nil
-//        
-//        
-//        // 1 - Choose one of the touches to work with
-//        guard let touch = touches.first else {
-//            return
-//        }
-//        let touchLocation = touch.location(in: self)
-//        
-//        // 2 - Set up initial location of projectile
-//        let projectile = SKSpriteNode(imageNamed: "projectile")
-//        projectile.position = player.position
-//        
-//        // 3 - Determine offset of location to projectile
-//        let offset = touchLocation - projectile.position
-//        
-//        // 4 - Bail out if you are shooting down or backwards
-//        //if (offset.x < -500) { return }
-//        
-//        // 5 - OK to add now - you've double checked position
-//        addChild(projectile)
-//        
-//        // 6 - Get the direction of where to shoot
-//        let direction = offset.normalized()
-//        
-//        // 7 - Make it shoot far enough to be guaranteed off screen
-//        let shootAmount = direction * 1000
-//        
-//        // 8 - Add the shoot amount to the current position
-//        let realDest = shootAmount + projectile.position
-//        
-//        // 9 - Create the actions
-//        let actionMove = SKAction.move(to: realDest, duration: 2.0)
-//        let actionMoveDone = SKAction.removeFromParent()
-//        projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
-//        
-//        projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
-//        projectile.physicsBody?.isDynamic = true
-//        projectile.physicsBody?.categoryBitMask = PhysicsCategory.Projectile
-//        projectile.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
-//        projectile.physicsBody?.collisionBitMask = PhysicsCategory.None
-//        projectile.physicsBody?.usesPreciseCollisionDetection = true
-//        
-//    }
-    
-    
-    
-    
-    // remove monster
+    /*
+     * Remove all monsters which are match with the gesture
+     */
     func projectileDidCollideWithMonster(name: String) {
-        
-        print(self.children.count)
-        
         self.enumerateChildNodes(withName: name, using: {
             node, stop in
             // do something with node or stop
@@ -366,36 +290,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 explosion.removeFromParent()
             }
         })
-        
-
     }
     
-    // run when collide
-//    func didBegin(_ contact: SKPhysicsContact) {
-//        
-//        // 1
-//        var firstBody: SKPhysicsBody
-//        var secondBody: SKPhysicsBody
-//        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-//            firstBody = contact.bodyA
-//            secondBody = contact.bodyB
-//        } else {
-//            firstBody = contact.bodyB
-//            secondBody = contact.bodyA
-//        }
-//        
-//        // 2
-//        if ((firstBody.categoryBitMask & PhysicsCategory.Monster != 0) &&
-//            (secondBody.categoryBitMask & PhysicsCategory.Projectile != 0)) {
-//            if let monster = firstBody.node as? SKSpriteNode, let
-//                projectile = secondBody.node as? SKSpriteNode {
-//                
-//                //projectileDidCollideWithMonster(projectile: projectile, monster: monster, name: "vline")
-//            }
-//        }
-//        
-//    }
-    
-    
+    /*
+     * If score is higher than 10, add one cloud on the screen.
+     * After that add one more whenever the other 3 score was collected.
+     */
+    func addCloud(){
+        if monstersDestroyed > scoreForAddCloud{
+            let cloud = SKSpriteNode(imageNamed: "cloud.png")
+            let actualX = random(min: cloud.size.width/2, max: size.width - cloud.size.width/2)
+            let actualY = random(min: cloud.size.height/2 + size.height * 0.1, max: size.height - cloud.size.width/3)
+            cloud.position = CGPoint(x: actualX, y: actualY)
+            cloud.zPosition = 1
+            addChild(cloud)
+            scoreForAddCloud += 3
+            print("scoreForAddCloud:\(scoreForAddCloud)")
+        }
+    }
     
 }

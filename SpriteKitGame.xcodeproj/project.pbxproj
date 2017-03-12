@@ -36,6 +36,7 @@
 		20F1649A1E72725F0019BA74 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20F164991E72725F0019BA74 /* MenuScene.sks */; };
 		20F1649C1E72729C0019BA74 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1649B1E72729C0019BA74 /* MenuScene.swift */; };
 		20F1649E1E727E940019BA74 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 20F1649D1E727E940019BA74 /* background.png */; };
+		B34E70141E751AB500CF38EC /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = B34E70131E751AB500CF38EC /* cloud.png */; };
 		B3ED1C111E6A021200DE5879 /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED1C101E6A021200DE5879 /* GestureRecognizer.swift */; };
 		B3ED1C141E6A039D00DE5879 /* VerticalFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED1C131E6A039D00DE5879 /* VerticalFit.swift */; };
 		B3FE87A91E6BA338004CD75E /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FE87A81E6BA338004CD75E /* DrawingView.swift */; };
@@ -73,6 +74,7 @@
 		20F164991E72725F0019BA74 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		20F1649B1E72729C0019BA74 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		20F1649D1E727E940019BA74 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		B34E70131E751AB500CF38EC /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
 		B3ED1C101E6A021200DE5879 /* GestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureRecognizer.swift; sourceTree = "<group>"; };
 		B3ED1C131E6A039D00DE5879 /* VerticalFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerticalFit.swift; path = "untitled folder/VerticalFit.swift"; sourceTree = "<group>"; };
 		B3FE87A81E6BA338004CD75E /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		20F1646C1E7255FF0019BA74 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B34E70131E751AB500CF38EC /* cloud.png */,
 				20F1647B1E7256210019BA74 /* brown_atlas_vertical */,
 				20F164721E7256180019BA74 /* pink_atlas_horizontal */,
 				20F1646D1E7256120019BA74 /* green_atlas_circle */,
@@ -220,12 +223,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = iMac03;
 				TargetAttributes = {
 					1389265D1E49550700ACE1AA = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 4QQT68W5D7;
+						DevelopmentTeam = N6RP3H788Z;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -268,6 +271,7 @@
 				1389266D1E49550700ACE1AA /* Main.storyboard in Resources */,
 				20CD68251E6943E900BA305F /* Explosion.sks in Resources */,
 				20F164791E7256180019BA74 /* alienPink_stand.png in Resources */,
+				B34E70141E751AB500CF38EC /* cloud.png in Resources */,
 				20F164711E7256120019BA74 /* alienGreen_climb2.png in Resources */,
 				20F164701E7256120019BA74 /* alienGreen_climb1.png in Resources */,
 				1389266F1E49550700ACE1AA /* Assets.xcassets in Resources */,
@@ -338,6 +342,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -388,6 +393,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -416,13 +422,13 @@
 		138926771E49550700ACE1AA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4QQT68W5D7;
+				DEVELOPMENT_TEAM = N6RP3H788Z;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = SpriteKitGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = onebite.tk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -433,13 +439,13 @@
 		138926781E49550700ACE1AA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4QQT68W5D7;
+				DEVELOPMENT_TEAM = N6RP3H788Z;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = SpriteKitGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = onebite.tk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
