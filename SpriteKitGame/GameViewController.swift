@@ -89,10 +89,6 @@ class GameViewController: UIViewController {
         if c.state == .possible{
             print("possible")
         }
-        /*
-         if c.state == .ended || c.state == .failed || c.state == .cancelled {
-         circlerDrawer.updateFit(fit: c.fitResult, madeCircle: c.isCircle)
-         }*/
     }
 
     func showGameSene(){

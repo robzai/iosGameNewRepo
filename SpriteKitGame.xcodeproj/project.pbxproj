@@ -37,6 +37,7 @@
 		20F1649C1E72729C0019BA74 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F1649B1E72729C0019BA74 /* MenuScene.swift */; };
 		20F1649E1E727E940019BA74 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 20F1649D1E727E940019BA74 /* background.png */; };
 		B34E70141E751AB500CF38EC /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = B34E70131E751AB500CF38EC /* cloud.png */; };
+		B34E70161E75F64A00CF38EC /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34E70151E75F64A00CF38EC /* RandomGenerator.swift */; };
 		B3ED1C111E6A021200DE5879 /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED1C101E6A021200DE5879 /* GestureRecognizer.swift */; };
 		B3ED1C141E6A039D00DE5879 /* VerticalFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ED1C131E6A039D00DE5879 /* VerticalFit.swift */; };
 		B3FE87A91E6BA338004CD75E /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FE87A81E6BA338004CD75E /* DrawingView.swift */; };
@@ -75,6 +76,7 @@
 		20F1649B1E72729C0019BA74 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		20F1649D1E727E940019BA74 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		B34E70131E751AB500CF38EC /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
+		B34E70151E75F64A00CF38EC /* RandomGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomGenerator.swift; sourceTree = "<group>"; };
 		B3ED1C101E6A021200DE5879 /* GestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureRecognizer.swift; sourceTree = "<group>"; };
 		B3ED1C131E6A039D00DE5879 /* VerticalFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerticalFit.swift; path = "untitled folder/VerticalFit.swift"; sourceTree = "<group>"; };
 		B3FE87A81E6BA338004CD75E /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				138926731E49550700ACE1AA /* Info.plist */,
 				B3ED1C101E6A021200DE5879 /* GestureRecognizer.swift */,
 				B3FE87A81E6BA338004CD75E /* DrawingView.swift */,
+				B34E70151E75F64A00CF38EC /* RandomGenerator.swift */,
 			);
 			path = SpriteKitGame;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				B3ED1C111E6A021200DE5879 /* GestureRecognizer.swift in Sources */,
 				B3FE87A91E6BA338004CD75E /* DrawingView.swift in Sources */,
 				1389266A1E49550700ACE1AA /* GameViewController.swift in Sources */,
+				B34E70161E75F64A00CF38EC /* RandomGenerator.swift in Sources */,
 				131320FA1E4C33F80001D8E6 /* GameOverScene.swift in Sources */,
 				131EF3BD1E6FEE2C00BE7EE2 /* HorizentalFit.swift in Sources */,
 				20F1649C1E72729C0019BA74 /* MenuScene.swift in Sources */,

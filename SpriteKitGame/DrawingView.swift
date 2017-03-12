@@ -26,7 +26,6 @@ class DrawingView: UIView {
     
     
     func updatePath(p: CGPath?) {
-        //print("update Path")
         path = p
         setNeedsDisplay()
     }
@@ -47,43 +46,5 @@ class DrawingView: UIView {
             context?.setLineJoin(CGLineJoin.round)
             context!.strokePath()
         }
-        
-        //    if let fit = fitResult, drawDebug { // if there is a fit and drawDebug is turned on
-        //      if !fit.error.isNaN { // if error has been defined, draw the fit
-        //        let fitRect = CGRect(
-        //          x: fit.center.x - fit.radius,
-        //          y: fit.center.y - fit.radius,
-        //          width: 2 * fit.radius,
-        //          height: 2 * fit.radius
-        //        )
-        //        let fitPath = UIBezierPath(ovalIn: fitRect)
-        //        fitPath.lineWidth = 3
-        //
-        //        // fit is the circle (green if the circle matched, red was the fit circle but did not recognize as a circle)
-        //        let circleColor = isCircle ? UIColor.green : UIColor.red
-        //        circleColor.setStroke()
-        //        fitPath.stroke()
-        //      }
-        //
-        //      // draw a black bounding box around the user touch path
-        //      let boundingBox = UIBezierPath(rect: path!.boundingBox)
-        //      boundingBox.lineWidth = 1
-        //      UIColor.black.setStroke()
-        //      boundingBox.stroke()
-        //
-        //      // draw a blue square inside as the touch exclusion area
-        //      let fitInnerRadius = fit.radius / sqrt(2)
-        //      let innerBoxRect = CGRect(
-        //        x: fit.center.x - fitInnerRadius,
-        //        y: fit.center.y - fitInnerRadius,
-        //        width: 2 * fitInnerRadius,
-        //        height: 2 * fitInnerRadius
-        //      )
-        //      let modifiedInnerBox = innerBoxRect.insetBy(dx: fitInnerRadius*0.2, dy: fitInnerRadius*0.2)
-        //
-        //      let innerBox = UIBezierPath(rect: modifiedInnerBox)
-        //      UIColor.blue.withAlphaComponent(0.5).setFill()
-        //      innerBox.fill()
-        //    }
     }
 }

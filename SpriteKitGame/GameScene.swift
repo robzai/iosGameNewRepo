@@ -104,11 +104,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         greenArray.append(SKTexture(imageNamed: "alienGreen_climb2.png"))
         
         
-        /*
-         background.size = self.frame.size;
-         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
-         addChild(background)
-         */
+        
+//         background.size = self.frame.size;
+//         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+//         addChild(background)
+ 
         
         // 2
         backgroundColor = UIColor(
@@ -133,15 +133,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //addChild(player)
         
         
-        //        run(SKAction.repeatForever(
-        //            SKAction.sequence([
-        //                SKAction.run(addMonster),
-        //                SKAction.run(uploadFrequency),
-        //                SKAction.wait(forDuration: fallFrequency)
-        //                ])
-        //        ))
-        
-        
         createActionSequence(fallFrequency: fallFrequency)
         let repeatAction = SKAction.repeatForever(actionSequence)
         run(repeatAction, withKey: "repeatAction")
@@ -160,9 +151,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(scoreLabel)
         
-        
     }
     
+    /*
+     * assign different methods to a SKAction obj
+     */
     func createActionSequence(fallFrequency: Double){
         actionSequence = SKAction.sequence([
             SKAction.run(addMonster),
@@ -171,14 +164,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             SKAction.wait(forDuration: fallFrequency)
             ])
         print("fallFrequency\(fallFrequency)")
-    }
-    
-    func random() -> CGFloat {
-        return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
-    }
-    
-    func random(min: CGFloat, max: CGFloat) -> CGFloat {
-        return random() * (max - min) + min
     }
     
     /*
@@ -305,7 +290,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             cloud.zPosition = 1
             addChild(cloud)
             scoreForAddCloud += 3
-            print("scoreForAddCloud:\(scoreForAddCloud)")
+            //print("scoreForAddCloud:\(scoreForAddCloud)")
         }
     }
     
